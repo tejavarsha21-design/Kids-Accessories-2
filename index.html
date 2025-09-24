@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kids Accessories Store</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Arial', sans-serif; }
+  body { background: #fdf6f0; color: #333; }
+  header { background: #ffcbf2; padding: 2rem; text-align: center; }
+  header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  header p { font-size: 1.2rem; }
+  .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; padding: 2rem; }
+  .card { background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 1rem; text-align: center; transition: transform 0.2s; }
+  .card:hover { transform: translateY(-5px); }
+  .card img { width: 100%; border-radius: 10px; margin-bottom: 1rem; }
+  .card h3 { margin-bottom: 0.5rem; color: #ff4d6d; }
+  .card p { font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .card span { font-weight: bold; display: block; margin-bottom: 1rem; }
+  .card button { padding: 0.5rem 1rem; border: none; border-radius: 5px; background: #ff4d6d; color: white; cursor: pointer; transition: background 0.2s; }
+  .card button:hover { background: #e63c5a; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Kids Wonderland</h1>
+  <p>Fun and Stylish Accessories for Your Little Stars!</p>
+</header>
+
+<section class="products">
+  <div class="card">
+    <img src="https://via.placeholder.com/200x200?text=T-Shirt" alt="T-Shirt">
+    <h3>Cool T-Shirt</h3>
+    <p>Bright colors, super soft fabric</p>
+    <span>$12.99</span>
+    <button onclick="buyNow('Cool T-Shirt', 12.99)">Buy Now</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/200x200?text=Dress" alt="Dress">
+    <h3>Lovely Dress</h3>
+    <p>Perfect for parties and playdates</p>
+    <span>$18.50</span>
+    <button onclick="buyNow('Lovely Dress', 18.50)">Buy Now</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/200x200?text=Jacket" alt="Jacket">
+    <h3>Warm Jacket</h3>
+    <p>Cozy and stylish for winters</p>
+    <span>$25.00</span>
+    <button onclick="buyNow('Warm Jacket', 25.00)">Buy Now</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/200x200?text=Cap" alt="Cap">
+    <h3>Fun Cap</h3>
+    <p>Protects from sun with style</p>
+    <span>$8.99</span>
+    <button onclick="buyNow('Fun Cap', 8.99)">Buy Now</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/200x200?text=Shoes" alt="Shoes">
+    <h3>Comfy Shoes</h3>
+    <p>Run and play all day long</p>
+    <span>$20.00</span>
+    <button onclick="buyNow('Comfy Shoes', 20.00)">Buy Now</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/200x200?text=Backpack" alt="Backpack">
+    <h3>Colorful Backpack</h3>
+    <p>Carry all your treasures</p>
+    <span>$15.00</span>
+    <button onclick="buyNow('Colorful Backpack', 15.00)">Buy Now</button>
+  </div>
+</section>
+
+<script>
+  function buyNow(name, price) {
+    localStorage.setItem('product', JSON.stringify({ name, price }));
+    window.location.href = 'checkout.html';
+  }
+</script>
+
+</body>
+</html>
