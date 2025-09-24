@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Kids Wonderland</title>
+<style>
+  body { font-family: 'Arial', sans-serif; background: #fdf6f0; color: #333; padding: 2rem; }
+  h1 { text-align: center; margin-bottom: 2rem; color: #ff4d6d; }
+  .checkout-container { max-width: 800px; margin: auto; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+  .cart-summary, .form-section, .payment-section, .order-summary { margin-bottom: 2rem; }
+  .cart-summary div { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+  input, select { width: 100%; padding: 0.5rem; margin: 0.5rem 0 1rem 0; border-radius: 5px; border: 1px solid #ccc; }
+  button { background: #ff4d6d; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer; transition: background 0.2s; }
+  button:hover { background: #e63c5a; }
+</style>
+</head>
+<body>
+
+<h1>Checkout</h1>
+<div class="checkout-container">
+  <div class="cart-summary">
+    <h2>Cart Summary</h2>
+    <div><span id="productName"></span> <span id="productPrice"></span></div>
+  </div>
+
+  <div class="form-section">
+    <h2>Shipping & Billing Details</h2>
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="text" id="address" placeholder="Address" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="tel" id="phone" placeholder="Phone" required>
+  </div>
+
+  <div class="payment-section">
+    <h2>Payment Options</h2>
+    <select id="paymentMethod">
+      <option value="Credit Card">Credit Card</option>
+      <option value="UPI">UPI</option>
+      <option value="PayPal">PayPal</option>
+    </select>
+  </div>
+
+  <div class="order-summary">
+    <h2>Order Summary</h2>
+    <div>Total: $<span id="totalPrice"></span></div>
+  </div>
+
+  <button onclick="placeOrder()">Proceed to Pay</button>
+</div>
+
+<script>
+  const product = JSON.parse(localStorage.getItem('product'));
+  if(product) {
+    document.getElementById('productName').innerText = product.name;
+    document.getElementById('productPrice').innerText = '$' + product.price.toFixed(2);
+    document.getElementById('totalPrice').innerText = product.price.toFixed(2);
+  }
+
+  function placeOrder() {
+    if(!document.getElementById('name').value || !document.getElementById('address').value) {
+      alert('Please fill all the required fields.');
+      return;
+    }
+    localStorage.removeItem('product'); // clear product
+    window.location.href = 'thankyou.html';
+  }
+</script>
+
+</body>
+</html>
